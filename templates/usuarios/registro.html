@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="tipo" value="profesor" id="tipoformulario">
+    {{user_form.as_p}}
+    <h3>Registro Alumno</h3>
+    {{alumno_form.as_p}}
+    <h3>Registro Profesor</h3>
+    {{profesor_form.as_p}}
+    <button type="submit">Registrarse</button>
+  </form>
+{% endblock %}

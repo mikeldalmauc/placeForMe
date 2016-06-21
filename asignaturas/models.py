@@ -13,6 +13,8 @@ class Facultad(models.Model):
     nombre = models.CharField(max_length=50)
     universidad = models.CharField(max_length=50)
     direccion = models.CharField(max_length=50)
+    # {'lista': ['xxx', 'yyyy', 'zzz']}
+    especialidades = JSONField(blank=True)
     def __str__(self):
         return self.nombre
 
@@ -21,8 +23,6 @@ class CursoAcademico(models.Model):
     inicioCuatrimestreDos = models.DateField(default=date.today, blank=True)
     finCuatrimestreUno = models.DateField(default=date.today, blank=True)
     finCuatrimestreDos = models.DateField(default=date.today, blank=True)
-    fiestas = JSONField(blank=True)
-    especiales = JSONField(blank=True)
     facultad = models.ForeignKey(Facultad)
     def __str__(self):
         return self.facultad.nombre
@@ -74,11 +74,9 @@ class AsignaturaAnno(models.Model):
     # {
     # 'Examenes': [{''Nombre': xxx, 'Dia': xxx (Tipo DATEJS), 'HInicio': xxx, 'HFin': xxx}, {..}, {..}],
     # 'Clases': [{'Dia': xxx (Tipo DATEJS), 'HInicio': xxx, 'HFin': xxx}, {..}, {..}],
-    # 'Tareas': [{'id', xxx, 'Titulo': xxx, 'Descripcion': xxx, 'HFin': xxx, 'Creador': user.id}, {..}, {..}]
+    # 'Tareas': [{'id', xxx, 'Titulo': xxx, 'Descripcion': xxx, 'HFin': xxx, 'Creador': user.id}, {..}, {..}],
     # }
     eventos = JSONField(blank=True)
-    # {'Clases': [{Dia': xxx (Tipo DATEJS), 'HInicio': xxx, 'HFin': xxx}, {..}, {..}]}
-    horarios = JSONField(blank=True)
     descripcion = models.CharField(max_length=1000)
     enlaceGuia = models.URLField(blank=True)
     colorEvento = models.CharField(max_length=8, blank=True)
