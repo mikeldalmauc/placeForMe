@@ -1,2 +1,0 @@
-# placeForMe
-practicas verano
