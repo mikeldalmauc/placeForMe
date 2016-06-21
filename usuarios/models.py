@@ -29,17 +29,18 @@ class Perfil(models.Model):
     avatar = models.ImageField(blank=True)
     fechaRegistro = models.DateField(default=date.today, blank=True)
     karma = models.IntegerField(default=50, validators=[MinValueValidator(0), MaxValueValidator(100)]) #Rango 0-100
-    rango = models.CharField(max_length=1, choices=RANGO)
+    rango = models.CharField(max_length=1, choices=RANGO, default='Estudiante')
     cuentaGmail = models.CharField(validators=[gmail_regex], blank=True, max_length=15)
 
     def __str__(self):
-        return self.nombre
+        return self.usuario.username
     class Meta:
         ordering = ('id', )
 
 class Profesor(Perfil):
     #Atributos
     despacho = models.IntegerField(default=0, blank=True)
+
 
 class Alumno(Perfil):
     CURSO = (
