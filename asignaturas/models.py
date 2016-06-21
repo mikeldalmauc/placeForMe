@@ -77,6 +77,7 @@ class AsignaturaAnno(models.Model):
     # 'Tareas': [{'id', xxx, 'Titulo': xxx, 'Descripcion': xxx, 'HFin': xxx, 'Creador': user.id}, {..}, {..}],
     # }
     eventos = JSONField(blank=True)
+
     descripcion = models.CharField(max_length=1000)
     enlaceGuia = models.URLField(blank=True)
     colorEvento = models.CharField(max_length=8, blank=True)
