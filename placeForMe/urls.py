@@ -7,6 +7,6 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('usuarios.urls', namespace='usuarios')),
-
+    url(r'^', include('asignaturas.urls', namespace='asignaturas')),
 
 ]

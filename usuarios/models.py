@@ -33,13 +33,14 @@ class Perfil(models.Model):
     cuentaGmail = models.CharField(validators=[gmail_regex], blank=True, max_length=15)
 
     def __str__(self):
-        return self.nombre
+        return self.usuario.username
     class Meta:
         ordering = ('id', )
 
 class Profesor(Perfil):
     #Atributos
     despacho = models.IntegerField(default=0, blank=True)
+
 
 class Alumno(Perfil):
     CURSO = (
