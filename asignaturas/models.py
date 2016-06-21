@@ -78,7 +78,6 @@ class AsignaturaAnno(models.Model):
     # }
     eventos = JSONField(blank=True)
     # {'Clases': [{Dia': xxx (Tipo DATEJS), 'HInicio': xxx, 'HFin': xxx}, {..}, {..}]}
-    horarios = JSONField(blank=True)
     descripcion = models.CharField(max_length=1000)
     enlaceGuia = models.URLField(blank=True)
     colorEvento = models.CharField(max_length=8, blank=True)
