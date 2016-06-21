@@ -3,7 +3,8 @@ from django.db import models
 from datetime import date, datetime
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
-import json
+from jsonfield import JSONField
+
 from django.conf import settings
 
 
@@ -20,8 +21,8 @@ class CursoAcademico(models.Model):
     inicioCuatrimestreDos = models.DateField(default=date.today, blank=True)
     finCuatrimestreUno = models.DateField(default=date.today, blank=True)
     finCuatrimestreDos = models.DateField(default=date.today, blank=True)
-    #fiestas = JSONField(null= True, blank=True)
-    #especiales = JSONField(null=True, blank=True)
+    fiestas = JSONField(blank=True)
+    especiales = JSONField(blank=True)
     facultad = models.ForeignKey(Facultad)
     def __str__(self):
         return self.facultad.nombre
@@ -75,9 +76,9 @@ class AsignaturaAnno(models.Model):
     # 'Clases': [{'Dia': xxx (Tipo DATEJS), 'HInicio': xxx, 'HFin': xxx}, {..}, {..}],
     # 'Tareas': [{'id', xxx, 'Titulo': xxx, 'Descripcion': xxx, 'HFin': xxx, 'Creador': user.id}, {..}, {..}]
     # }
-    #eventos = JSONField(null=True, blank=True)
+    eventos = JSONField(blank=True)
     # {'Clases': [{Dia': xxx (Tipo DATEJS), 'HInicio': xxx, 'HFin': xxx}, {..}, {..}]}
-    #horarios = JSONField(null= True, blank=True)
+    horarios = JSONField(blank=True)
     descripcion = models.CharField(max_length=1000)
     enlaceGuia = models.URLField(blank=True)
     colorEvento = models.CharField(max_length=8, blank=True)
